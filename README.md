@@ -1,5 +1,6 @@
 # Fyle Frontend development challenge
-Challenge outline: Github Repositories listing page
+
+Hosted URL : https://fyle-internship-challenge-23-dusky.vercel.app/
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
