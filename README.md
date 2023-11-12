@@ -1,8 +1,6 @@
 # Fyle Frontend development challenge
 Challenge outline: Github Repositories listing page
 
-![NoteDrop Home Page](https://i.imgur.com/5nngZgr.png)
-
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
