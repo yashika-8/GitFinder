@@ -1,6 +1,14 @@
 import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SearchComponent } from './search/search.component';
+import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RepositoriesComponent } from './repositories/repositories.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { ItemsPerPageComponent } from './items-per-page/items-per-page.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ApiService } from './services/api.service';
 import { of } from 'rxjs';
 
@@ -13,8 +21,20 @@ describe('AppComponent', () => {
     apiService = jasmine.createSpyObj('ApiService', ['getUser', 'getRepos', 'getRepoLanguages']);
 
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      imports: [HttpClientTestingModule],
+      declarations: [
+        AppComponent,
+        SearchComponent,
+        SkeletonLoaderComponent,
+        ProfileComponent,
+        RepositoriesComponent,
+        PaginationComponent,
+        ItemsPerPageComponent,
+      ],
+      imports: [
+        HttpClientTestingModule, 
+        FormsModule,
+        FontAwesomeModule
+      ],
       providers: [
         { provide: ApiService, useValue: apiService }
       ]
@@ -22,6 +42,10 @@ describe('AppComponent', () => {
 
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
+  });
+
+  afterEach(() => {
+    apiService.getUser.calls.reset();
   });
 
   it('should create the app', () => {
@@ -43,9 +67,17 @@ describe('AppComponent', () => {
     const userDetails = { name: 'John Doe', public_repos: 5, repos_url: 'https://api.github.com/users/johndoe/repos' };
     const userRepos = [{ name: 'repo1' }, { name: 'repo2' }];
 
-    spyOn(apiService, 'getUser').and.returnValue(of(userDetails));
-    spyOn(apiService, 'getRepos').and.returnValue(of(userRepos));
+    // spyOn(apiService, 'getUser').and.returnValue(of(userDetails));
+    // spyOn(apiService, 'getRepos').and.returnValue(of(userRepos));
+    apiService.getUser = jasmine.createSpy("getUser")
+    apiService.getUser.and.returnValue(of(userDetails));
+    apiService.getRepos = jasmine.createSpy("getRepos")
+    apiService.getRepos.and.returnValue(of(userRepos));
 
+    component.totalPages = 1;
+    component.userDetails = userDetails;
+    component.totalItems = userDetails.public_repos;
+    component.userRepos = userRepos;
     fixture.detectChanges();
 
     component.ngOnInit();
