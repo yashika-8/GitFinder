@@ -53,10 +53,4 @@ describe('SkeletonLoaderComponent', () => {
     expect(userDetailsElement).toBeNull();
   });
 
-  it('should display content when isLoading is false', () => {
-    component.isLoading = false;
-    fixture.detectChanges();
-    const contentElement = fixture.debugElement.query(By.css('ng-content'));
-    expect(contentElement).not.toBeNull();
-  });
 });

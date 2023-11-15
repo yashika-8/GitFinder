@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfileComponent } from './profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -7,7 +8,10 @@ describe('ProfileComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfileComponent]
+      declarations: [ProfileComponent],
+      imports: [
+        FontAwesomeModule
+      ]
     });
 
     fixture = TestBed.createComponent(ProfileComponent);
@@ -37,7 +41,7 @@ describe('ProfileComponent', () => {
     component.userDetails = mockUserDetails;
     fixture.detectChanges();
 
-    const profileContainer = fixture.nativeElement.querySelector('.flex.flex-col.md:flex-row.items-center.mb-4.justify-center.gap-8');
+    const profileContainer = fixture.nativeElement.querySelector('.flex.flex-col.md:flex-row.items-center.mt-6.mb-4.justify-start.gap-8');
     expect(profileContainer).toBeTruthy();
 
     const avatarImage = profileContainer.querySelector('.rounded-full.shadow-2xl.p-2 img');

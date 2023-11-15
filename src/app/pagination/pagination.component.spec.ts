@@ -7,7 +7,7 @@ describe('PaginationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PaginationComponent]
+      declarations: [PaginationComponent],
     });
 
     fixture = TestBed.createComponent(PaginationComponent);
@@ -26,7 +26,7 @@ describe('PaginationComponent', () => {
     const paginationContainer = fixture.nativeElement.querySelector('.mt-8.flex.flex-col');
     expect(paginationContainer).toBeTruthy();
 
-    const prevButton = paginationContainer.querySelector('.bg-blue-500.text-white.px-3.py-2.rounded-md');
+    const prevButton = paginationContainer.querySelector('.older');
     expect(prevButton).toBeTruthy();
     expect(prevButton.textContent).toBe('Older');
 
@@ -34,7 +34,7 @@ describe('PaginationComponent', () => {
     expect(pageNumberButtonsContainer).toBeTruthy();
     expect(pageNumberButtonsContainer.querySelectorAll('a.bg-blue-100.text-blue-500.px-3.py-2.rounded-md').length).toBe(10);
 
-    const nextButton = paginationContainer.querySelector('.bg-blue-500.text-white.px-3.py-2.rounded-md:last-child');
+    const nextButton = paginationContainer.querySelector('.newer');
     expect(nextButton).toBeTruthy();
     expect(nextButton.textContent).toBe('Newer');
   });
