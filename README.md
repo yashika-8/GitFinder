@@ -88,6 +88,5 @@ The assignment uses the following external packages to enhance functionality and
 Please make sure to install these packages during the installation process, as mentioned above.
 
 For more information or any assistance, please contact: \
-Mail: mishrachandan.dd@gmail.com \
-Website: https://mchandan.me/
+Mail: ravirala.sai1712@gmail.com
 
