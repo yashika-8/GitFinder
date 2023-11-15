@@ -22,7 +22,7 @@ Before running the application and unit tests, make sure you have the following 
 1. Clone the GitHub repository to your local machine:
 
    ```
-   git clone https://github.com/dontdude/fyle-internship-challenge-23.git
+   git clone https://github.com/sai-1712/fyle-internship-challenge-23.git
    ```
 
 2. Navigate to the project's root directory:
@@ -88,6 +88,5 @@ The assignment uses the following external packages to enhance functionality and
 Please make sure to install these packages during the installation process, as mentioned above.
 
 For more information or any assistance, please contact: \
-Mail: mishrachandan.dd@gmail.com \
-Website: https://mchandan.me/
+Mail: ravirala.sai1712@gmail.com
 
