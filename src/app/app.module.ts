@@ -14,6 +14,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { ItemsPerPageComponent } from './items-per-page/items-per-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NouserComponent } from './nouser/nouser.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RepositoriesComponent,
     PaginationComponent,
     ItemsPerPageComponent,
+    NouserComponent,
   ],
   imports: [
     BrowserModule,

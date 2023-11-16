@@ -21,6 +21,7 @@
   
       <!-- skeleton loader -->
       <app-skeleton-loader
+       *ngIf="isSuccess; else NoUserFound "
        [isLoading]="isLoading"
        skeletonType="user-details"
       >
@@ -42,6 +43,11 @@
          (pageChange)="handlePageChange($event)"
         ></app-pagination>
       </app-skeleton-loader>
+
+      <ng-template #NoUserFound>
+        <app-nouser [isSuccess]="isSuccess" ></app-nouser>
+      </ng-template>
+      
     </div>
   </div>
 </div>

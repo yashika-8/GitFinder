@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, HostListener, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -12,5 +12,12 @@ export class SearchComponent {
 
   searchUser() {
     this.searchUserEvent.emit(this.userName);
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  listenForEnterKey(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.searchUser();
+    }
   }
 }

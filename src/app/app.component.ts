@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   totalItems: number = 0;
   currentPage: number = 1;
   isLoading: boolean = false;
+  isSuccess: boolean = true;
 
   constructor(private apiService: ApiService) {
     effect(() => {
@@ -31,7 +32,6 @@ export class AppComponent implements OnInit {
   @HostBinding('class.dark') get mode() {
     return this.darkMode();
   }
-
 
   searchUser(userName: string) {
     this.userName = userName;
@@ -55,7 +55,18 @@ export class AppComponent implements OnInit {
       this.totalItems = data.public_repos;
       this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
       this.fetchUserRepos(data.repos_url, this.currentPage, this.itemsPerPage);
-      setTimeout(()=> {
+      this.isSuccess = true;
+    },
+    (error) => {
+      if (error.status === 404) {
+        console.log('User not found');
+        this.isSuccess = false;
+      } else {
+        console.error('Error fetching user details:', error);
+      }
+    },
+    () => {
+      setTimeout(() => {
         this.isLoading = false;
       }, 1000);
     });
@@ -111,12 +122,5 @@ export class AppComponent implements OnInit {
   changeNameAndFetchData(newName: string) {
     this.userName = newName;
     this.updateUserName();
-  }
-
-  @HostListener('window:keydown', ['$event'])
-  listenForEnterKey(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      this.updateUserName();
-    }
   }
 }
